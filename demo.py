@@ -167,7 +167,7 @@ def process_data(input_data):
                 result[number_name] = [[score], [text]]
             else:
                 result[number_name][0].append(score)
-                result[number_name][1].append(text)
+                result[number_name][1].extend(text)
         temp_result = []
         for name, values in result.items():
             avg_score = sum(values[0]) / len(values[0])
@@ -185,7 +185,7 @@ def find_blackboard(data):
         new_result = [data[0]]
         count = 0
         for part in data[1:]:
-            if part[2] - new_result[-1][2] >= 3:
+            if part[2] - new_result[-1][2] >= 10:
                 count += 1
                 if count >= 3:
                     new_result.append(part)
