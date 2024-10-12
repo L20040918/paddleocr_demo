@@ -123,7 +123,7 @@ def process_frame(output_directory):
         all_result = []
         # det_model_dir：字符串类型，指定自定义的检测模型路径
         # rec_model_dir：字符串类型，指定自定义的识别模型路径
-        ocr = PaddleOCR(use_angle_cls=True, lang='en')  # 移动到循环外面，避免重复初始化
+        ocr = PaddleOCR(use_angle_cls=True, lang='ch', det_model_dir='pts/ch_PP-OCRv4_det_infer', rec_model_dir='pts/ch_PP-OCRv4_rec_infer', use_gpu=True)  # 移动到循环外面，避免重复初始化
         for filename in os.listdir(output_directory):
             if filename.endswith(".png") and "Board" in filename:
                 img_path = os.path.join(output_directory, filename)  # 修复路径拼接问题
